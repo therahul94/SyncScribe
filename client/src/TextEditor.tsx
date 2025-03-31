@@ -23,7 +23,7 @@ export default function TextEditor() {
     // For sending the changes in the quill editor to the backend so that it can send the changes back to the correct room.
     useEffect(()=>{
         if(!quill || !socket) return;
-        const handler = (delta: Delta, oldDelta: Delta, source: EmitterSource)=>{
+        const handler = (delta: Delta, source: EmitterSource)=>{
             if(source !== 'user') return;
             socket.emit('send-changes', delta);
         }
