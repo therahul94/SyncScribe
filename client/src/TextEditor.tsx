@@ -60,7 +60,7 @@ export default function TextEditor() {
     // For saving the data to the db...
     useEffect(()=>{
         if(!socket || !quill) return ;
-        const intervalId = setInterval(()=>{
+        const intervalId = setInterval(async ()=>{
             socket.emit('save-changes', quill.getContents());
         }, intervalTime);
         return ()=>{
