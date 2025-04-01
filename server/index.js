@@ -14,7 +14,8 @@ mongoose.connect(process.env.DB_URL).then(() => {
 
 const io = new Server(process.env.PORT, {
     cors: {
-        origin: process.env.FRONTEND_URL,
+        // origin: process.env.FRONTEND_URL,
+        origin: '*',
         methods: ["GET", "POST"]
     }
 })
