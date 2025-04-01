@@ -21,7 +21,9 @@ const io = new Server(3000, {
 
 io.on("connection", socket => {
     socket.on('get-document', async (documentId)=>{
+        console.log("docid: ", documentId, "\n");
         const document = await findOrCreateDoc(documentId);
+        console.log("docs: ", document);
         socket.join(documentId);
         socket.emit('load-document', document.doc);
         socket.on("send-changes", (delta)=>{

@@ -71,10 +71,9 @@ export default function TextEditor() {
     const toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
         ['blockquote', 'code-block'],
-        ['link', 'image', 'video', 'formula'],
       
         [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
         [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
         [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
         [{ 'direction': 'rtl' }],                         // text direction
@@ -87,7 +86,7 @@ export default function TextEditor() {
         [{ 'align': [] }],
       
         ['clean']                                         // remove formatting button
-      ];
+    ];
     type wrapperType = { innerHTML: string; append: (arg0: HTMLDivElement) => void; } | null
     
     const wrapperRef = useCallback((wrapper: wrapperType) => {
