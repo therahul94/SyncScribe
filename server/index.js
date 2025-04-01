@@ -16,7 +16,7 @@ const io = new Server(process.env.PORT, {
     cors: {
         // origin: process.env.FRONTEND_URL,
         origin: '*',
-        methods: ["GET", "POST"]
+        // methods: ["GET", "POST"]
     }
 })
 
