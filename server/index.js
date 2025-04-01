@@ -12,7 +12,7 @@ mongoose.connect(process.env.DB_URL).then(() => {
     console.error('Error connecting to MongoDB:', error);
 });
 
-const io = new Server(3000, {
+const io = new Server(process.env.PORT, {
     cors: {
         origin: process.env.FRONTEND_URL,
         methods: ["GET", "POST"]
