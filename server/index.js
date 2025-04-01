@@ -5,28 +5,23 @@ import docModel from "./document.model.js";
 dotenv.config();
 
 
-mongoose.connect(process.env.DB_URL).then(() => {
-    console.log("hello");
-    
-    console.log('Connected to MongoDB');
+mongoose.connect(process.env.DB_URL).then(() => {    
+    console.log('Connected to MongoDB1');
 })
 .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
+    console.log('Error connecting to MongoDB:', error);
 });
 
 const io = new Server(process.env.PORT, {
     cors: {
-        // origin: process.env.FRONTEND_URL,
-        origin: '*',
+        origin: process.env.FRONTEND_URL,
         methods: ["GET", "POST"]
     }
 })
 
 io.on("connection", socket => {
     socket.on('get-document', async (documentId)=>{
-        console.log("docid: ", documentId, "\n");
         const document = await findOrCreateDoc(documentId);
-        console.log("docs: ", document);
         socket.join(documentId);
         socket.emit('load-document', document.doc);
         socket.on("send-changes", (delta)=>{
