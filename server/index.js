@@ -6,6 +6,8 @@ dotenv.config();
 
 
 mongoose.connect(process.env.DB_URL).then(() => {
+    console.log("hello");
+    
     console.log('Connected to MongoDB');
 })
 .catch((error) => {
@@ -16,7 +18,7 @@ const io = new Server(process.env.PORT, {
     cors: {
         // origin: process.env.FRONTEND_URL,
         origin: '*',
-        // methods: ["GET", "POST"]
+        methods: ["GET", "POST"]
     }
 })
 
